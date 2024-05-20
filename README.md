@@ -22,6 +22,7 @@ The application requires the following dependencies to function:
 **Contribution**
 
 You can contribute to this project by making suggestions for improvement, creating pull requests, or opening issues in this repository.
+
 **License**
 
 This project is licensed under the terms of the MIT License. For more information, see the LICENSE file.
