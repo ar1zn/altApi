@@ -6,7 +6,7 @@ Usage
 
 **Compile and run the application by entering the following command in your terminal:**
 
-    java -jar altApi.jar
+    java -jar altProject.jar
 
 The application will prompt you to choose two packages from the list provided in the console. To select packages, enter their numbers separated by commas.
 
