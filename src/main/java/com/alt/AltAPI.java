@@ -23,7 +23,7 @@ import java.util.Objects;
 public class AltAPI {
     private static final String BASE_URL = "https://rdb.altlinux.org/api/export/branch_binary_packages/";
 
-    public static String getJsonForPackages(String branch1,String branch2) throws JsonProcessingException {
+    public static String getJsonForPackages(String branch1, String branch2) throws JsonProcessingException {
         Client client = ClientBuilder.newClient();
 
         JsonArray packagesNodeFirstBranch = fetchPackages(client, branch1);
@@ -105,7 +105,6 @@ public class AltAPI {
     }
 
 
-
     private static JsonArray fetchPackages(Client client, String branch) {
         String url = BASE_URL.concat(branch);
         WebTarget target = client.target(url);
@@ -117,90 +116,6 @@ public class AltAPI {
         }
 
         String responseBody = response.readEntity(String.class);
-//        String testStr = "{\n" +
-//                "  \"packages\": [\n" +
-//                "    {\n" +
-//                "      \"name\": \"i586-zzuf\",\n" +
-//                "      \"epoch\": 0,\n" +
-//                "      \"version\": \"0.15\",\n" +
-//                "      \"release\": \"alt1_10\",\n" +
-//                "      \"arch\": \"x86_64-i586\",\n" +
-//                "      \"disttag\": \"sisyphus+225100.100.1.1\",\n" +
-//                "      \"buildtime\": 1552687303,\n" +
-//                "      \"source\": \"\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "      \"name\": \"package2\",\n" +
-//                "      \"epoch\": 1,\n" +
-//                "      \"version\": \"2.0\",\n" +
-//                "      \"release\": \"beta\",\n" +
-//                "      \"arch\": \"x86_64\",\n" +
-//                "      \"disttag\": \"disttag2\",\n" +
-//                "      \"buildtime\": 1620427303,\n" +
-//                "      \"source\": \"source2\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "      \"name\": \"package4\",\n" +
-//                "      \"epoch\": 2,\n" +
-//                "      \"version\": \"4.0\",\n" +
-//                "      \"release\": \"alpha\",\n" +
-//                "      \"arch\": \"x86_64\",\n" +
-//                "      \"disttag\": \"disttag4\",\n" +
-//                "      \"buildtime\": 1620427303,\n" +
-//                "      \"source\": \"source4\"\n" +
-//                "    }\n" +
-//                "  ]\n" +
-//                "}\n";
-//        String testStr2 = "{\n" +
-//                "  \"packages\": [\n" +
-//                "    {\n" +
-//                "      \"name\": \"i586-zzuf\",\n" +
-//                "      \"epoch\": 0,\n" +
-//                "      \"version\": \"0.15\",\n" +
-//                "      \"release\": \"alt1_10\",\n" +
-//                "      \"arch\": \"x86_64-i586\",\n" +
-//                "      \"disttag\": \"sisyphus+225100.100.1.1\",\n" +
-//                "      \"buildtime\": 1552687303,\n" +
-//                "      \"source\": \"\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "      \"name\": \"package3\",\n" +
-//                "      \"epoch\": 1,\n" +
-//                "      \"version\": \"3.0\",\n" +
-//                "      \"release\": \"rc1\",\n" +
-//                "      \"arch\": \"x86_64\",\n" +
-//                "      \"disttag\": \"disttag3\",\n" +
-//                "      \"buildtime\": 1620427303,\n" +
-//                "      \"source\": \"source3\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "      \"name\": \"package2\",\n" +
-//                "      \"epoch\": 1,\n" +
-//                "      \"version\": \"2.0\",\n" +
-//                "      \"release\": \"beta\",\n" +
-//                "      \"arch\": \"x86_64\",\n" +
-//                "      \"disttag\": \"disttag2\",\n" +
-//                "      \"buildtime\": 1620427303,\n" +
-//                "      \"source\": \"source2\"\n" +
-//                "    },\n" +
-//                "    {\n" +
-//                "      \"name\": \"package5\",\n" +
-//                "      \"epoch\": 3,\n" +
-//                "      \"version\": \"5.0\",\n" +
-//                "      \"release\": \"gamma\",\n" +
-//                "      \"arch\": \"x86_64\",\n" +
-//                "      \"disttag\": \"disttag5\",\n" +
-//                "      \"buildtime\": 1620427303,\n" +
-//                "      \"source\": \"source5\"\n" +
-//                "    }\n" +
-//                "  ]\n" +
-//                "}\n";
-//        JsonObject jsonObject = null;
-//        if (branch.equals("sisyphus")) {
-//            jsonObject = parseJson(testStr);
-//        } else {
-//            jsonObject = parseJson(testStr2);
-//        }
         JsonObject jsonObject = parseJson(responseBody);
         return jsonObject.getJsonArray("packages");
     }
